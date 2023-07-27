@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="consumeAPImmarketdemo.Paginas.ModPerfiles">
+    <ContentPage.Content>
+        <StackLayout>
+            <TableView x:Name="PerfsTableView">
+                <TableRoot>
+                    <TableSection Title="Perfiles para Usuarios">
+                        <ViewCell x:Name="cabecera">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Label Grid.Column="0" Text="ID" FontAttributes="Bold" 
+                                   HorizontalOptions="Center" />
+                                <Label Grid.Column="1" Text="Nombre Perfil" FontAttributes="Bold" 
+                                   HorizontalOptions="Center" />
+                                <Label Grid.Column="2" Text="Modulo" FontAttributes="Bold" 
+                                   HorizontalOptions="Center" />
+                            </Grid>
+                        </ViewCell>
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

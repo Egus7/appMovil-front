@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="consumeAPImmarketdemo.Paginas.ModuloFacturacion.FacFacturas">
+  <!--Pages can be added as references or inline-->
+    <ContentPage Title="Lista Facturas">
+        <StackLayout>
+            <TableView x:Name="FacturasCabTableView">
+                <TableRoot>
+                    <TableSection Title="FacturasCab">
+                        <ViewCell x:Name="cabeceraCab">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Label Grid.Column="0" Text="N° Factura" FontAttributes="Bold" 
+                                   HorizontalOptions="Center" />
+                                <Label Grid.Column="1" Text="Cliente" FontAttributes="Bold" 
+                                   HorizontalOptions="Center" />
+                                <Label Grid.Column="2" Text="Fecha Emision" FontAttributes="Bold" 
+                                   HorizontalOptions="Center" />
+                                <Label Grid.Column="3" Text="Subtotal" FontAttributes="Bold" 
+                                   HorizontalOptions="Center" />
+                                <Label Grid.Column="4" Text="Valor IVA" FontAttributes="Bold" 
+                                   HorizontalOptions="Center" />
+                                <Label Grid.Column="5" Text="Total" FontAttributes="Bold" 
+                                   HorizontalOptions="Center" />
+                                <Label Grid.Column="6" Text="Estado" FontAttributes="Bold" 
+                                   HorizontalOptions="Center" />
+                                <Label Grid.Column="7" Text="Detalles" FontAttributes="Bold" 
+                                   HorizontalOptions="Center" />
+                            </Grid>
+                        </ViewCell>
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+        </StackLayout>
+    </ContentPage>
+    <!-- Registrar Factura-->
+    <ContentPage Title="Registrar Factura">
+        <StackLayout>
+            <Label Text="Fecha Pedido" />
+            <DatePicker x:Name="fechaPicker" Date="{Binding Today}" />
+
+            <!-- Cliente -->
+            <Label Text="Cliente:" FontAttributes="Bold" />
+            <Picker x:Name="pickerCliente" Title="Selecione Cliente" >
+
+            </Picker>
+
+            <!-- Agregar nuevo detalle -->
+            <StackLayout Orientation="Horizontal">
+                <Picker x:Name="pickerProducto" Title="Selecione Producto" >
+
+                </Picker>
+                <Entry Placeholder="Cantidad" x:Name="entryCantidad" Keyboard="Numeric" />
+                <Button Text="Agregar Detalle" Clicked="OnAgregarDetalleClicked" />
+            </StackLayout>
+
+            <!-- ListView para mostrar los detalles ingresados -->
+            <ListView ItemsSource="{Binding Detalles}" x:Name="listViewFacDetalles">
+                <ListView.Header>
+                    <StackLayout Orientation="Horizontal" BackgroundColor="LightGray">
+                        <Label Text="Código" FontAttributes="Bold" WidthRequest="140" HorizontalTextAlignment="Center" />
+                        <Label Text="Cantidad" FontAttributes="Bold" WidthRequest="100" HorizontalTextAlignment="Center" />
+                        <Label Text="Precio Unitario" FontAttributes="Bold" WidthRequest="100" HorizontalTextAlignment="Center" />
+                        <Label Text="Subtotal" FontAttributes="Bold" WidthRequest="85" HorizontalTextAlignment="Center" />
+                        <Label Text="Stock" FontAttributes="Bold" WidthRequest="65" HorizontalTextAlignment="Center" />
+                        <Label Text="Acciones" FontAttributes="Bold" WidthRequest="95" HorizontalTextAlignment="Center" />
+                    </StackLayout>
+                </ListView.Header>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                                <!-- Alinea los datos debajo de cada columna de la cabecera -->
+                                <Label Text="{Binding NombreProducto}" FontSize="15" WidthRequest="125" HorizontalTextAlignment="Center" />
+                                <Label Text="{Binding cantidad}" FontSize="15" WidthRequest="30" HorizontalTextAlignment="Center" />
+                                <Label Text="{Binding precio_unitario_venta}" FontSize="15" WidthRequest="100" HorizontalTextAlignment="Center" />
+                                <Label Text="{Binding subtotal}" FontSize="15" WidthRequest="85" HorizontalTextAlignment="Center" />
+                                <Label Text="{Binding stock}" FontSize="15" WidthRequest="65" HorizontalTextAlignment="Center" LineBreakMode="TailTruncation" />
+                                <!-- Botón para eliminar -->
+                                <ImageButton Source="https://cdn-icons-png.flaticon.com/512/5974/5974771.png" 
+                                        WidthRequest="22" HeightRequest="22" 
+                                        BackgroundColor="Color.Transparent"
+                                        Clicked="OnEliminarDetalleClicked"
+                                        CommandParameter="{Binding .}"
+                                        HorizontalOptions="CenterAndExpand" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Button Text="Registrar Factura" Clicked="Button_RegistrarFacturaClicked" />
+
+        </StackLayout>
+    </ContentPage>
+
+    <ContentPage Title="Tab 3" />
+</TabbedPage>

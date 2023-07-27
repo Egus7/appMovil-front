@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="consumeAPImmarketdemo.Paginas.ModUsuario">
+    <!--Pages can be added as references or inline-->
+    <ContentPage Title="Lista Usuarios">
+        <StackLayout>
+            <TableView x:Name="UsersTableView">
+                <TableRoot>
+                    <TableSection Title="Usuarios">
+                        <ViewCell x:Name="cabecera">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Label Grid.Column="0" Text="ID" FontAttributes="Bold" 
+                                   HorizontalOptions="Center" />
+                                <Label Grid.Column="1" Text="Código" FontAttributes="Bold" 
+                                   HorizontalOptions="Center" />
+                                <Label Grid.Column="2" Text="Nombres" FontAttributes="Bold" 
+                                   HorizontalOptions="Center" />
+                                <Label Grid.Column="3" Text="Apellidos" FontAttributes="Bold" 
+                                   HorizontalOptions="Center" />
+                                <Label Grid.Column="4" Text="Correo" FontAttributes="Bold" 
+                                   HorizontalOptions="Center" />
+                                <Label Grid.Column="5" Text="Activo" FontAttributes="Bold" 
+                                   HorizontalOptions="Center" />
+                                <Label Grid.Column="6" Text="Opciones" FontAttributes="Bold" 
+                                       HorizontalOptions="Center" />
+                            </Grid>
+                        </ViewCell>
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+        </StackLayout>
+    </ContentPage>
+    <!--Insertar y Actulizar Usuario -->
+    <ContentPage Title="Insertar Usuario" x:Name="editarUsuarioPage">
+        <StackLayout>
+
+            <Label Text="API REST - MODULO de Seguridades - Usuarios" ></Label>
+            <Label x:Name="lblDatos" Text="ID:" FontSize="15" ></Label>
+            <Entry Placeholder="Id" x:Name="txtId" />
+            <Label x:Name="lblDatosC" Text="Codigo:" FontSize="15" ></Label>
+            <Entry Placeholder="Codigo" x:Name="txtCodigo" />
+            <Label x:Name="lblDatosN" Text="Nombres:" FontSize="15" ></Label>
+            <Entry Placeholder="Nombres" x:Name="txtNombres" />
+            <Label x:Name="lblDatosA" Text="Apellidos:" FontSize="15" ></Label>
+            <Entry Placeholder="Apellidos" x:Name="txtApellidos" />
+            <Label x:Name="lblDatosCr" Text="Correo:" FontSize="15" ></Label>
+            <Entry Placeholder="Correo" x:Name="txtCorreo" />
+            <Label x:Name="lblDatosCl" Text="Clave:" FontSize="15" ></Label>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <!-- Columna para el Entry -->
+                    <ColumnDefinition Width="Auto" />
+                    <!-- Columna para el Switch -->
+                </Grid.ColumnDefinitions>
+                <Entry Grid.Column="0" Placeholder="Clave" x:Name="txtClave" IsPassword="True" />
+                <Switch Grid.Column="1" x:Name="switchMostrarClave" Toggled="SwitchMostrarClave_Toggled" />
+            </Grid>
+
+            <Label x:Name="lblDatosAc" Text="Activo?:" FontSize="15" ></Label>
+            <Switch x:Name="swActivo" IsToggled="False" HorizontalOptions="Start" />
+
+            <Button Text="Insertar" Clicked="Button_Insertar" />
+            <Button Text="Actualizar" Clicked="Button_Actualizar" />
+            <Button Text="Limpiar Campos" Clicked="Button_Limpiar" />
+
+        </StackLayout>
+    </ContentPage>
+</TabbedPage>

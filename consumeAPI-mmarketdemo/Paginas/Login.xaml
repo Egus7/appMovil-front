@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="consumeAPImmarketdemo.Paginas.Login">
+    <ContentPage.Content>
+        <StackLayout>
+            <Entry x:Name="EntryCodigo" Placeholder="Código" />
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <!-- Columna para el Entry -->
+                    <ColumnDefinition Width="Auto" />
+                    <!-- Columna para el Switch -->
+                </Grid.ColumnDefinitions>
+                <Entry Grid.Column="0" x:Name="EntryClave" Placeholder="Clave" IsPassword="True" />
+                <Switch Grid.Column="1" x:Name="switchMostrarClave" Toggled="SwitchMostrarClave_Toggled" />
+            </Grid>
+
+            <Button Text="Iniciar sesión" Clicked="Button_Login_Clicked" />
+            <Button Text="Registrarse" Clicked="Button_Reg_Clicked" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="consumeAPImmarketdemo.Paginas.ModuloFacturacion.FacClientes">
+  <!--Pages can be added as references or inline-->
+    <ContentPage Title="Lista Clientes">
+        <StackLayout>
+            <TableView x:Name="ClientsTableView">
+                <TableRoot>
+                    <TableSection Title="Clientes">
+                        <ViewCell x:Name="cabecera">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Label Grid.Column="0" Text="Cedula" FontAttributes="Bold" 
+                                   HorizontalOptions="Center" />
+                                <Label Grid.Column="1" Text="Nombre" FontAttributes="Bold" 
+                                   HorizontalOptions="Center" />
+                                <Label Grid.Column="2" Text="Apellido" FontAttributes="Bold" 
+                                   HorizontalOptions="Center" />
+                                <Label Grid.Column="3" Text="Direccion" FontAttributes="Bold" 
+                                   HorizontalOptions="Center" />
+                                <Label Grid.Column="4" Text="Opciones" FontAttributes="Bold" 
+                                   HorizontalOptions="Center" />
+                            </Grid>
+                        </ViewCell>
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+        </StackLayout>
+    </ContentPage>
+    <ContentPage Title="CRUD Clientes" x:Name="crudClientes">
+        <StackLayout>
+            <Label Text="API REST - MODULO de Facturacion - Clientes" FontSize="16" ></Label>
+            <Label x:Name="lblDatos" Text="Cedula:" FontSize="14"></Label>
+            <Entry Placeholder="Cedula" x:Name="txtCedula" />
+            <Label x:Name="lblDatos2" Text="Nombre:" FontSize="14"></Label>
+            <Entry Placeholder="Nombre" x:Name="txtNombre" />
+            <Label x:Name="lblDatos3" Text="Apellido:" FontSize="14"></Label>
+            <Entry Placeholder="Apellido" x:Name="txtApellido" />
+            <Label x:Name="lblDatos4" Text="Direccion:" FontSize="14"></Label>
+            <Entry Placeholder="Direccion" x:Name="txtDireccion" />
+
+            <Button Text="Insertar" Clicked="Button_Insertar" />
+            <Button Text="Actualizar" Clicked="Button_Actualizar"/>
+            <Button Text="Limpiar Datos" Clicked="Button_Limpiar"/>
+
+        </StackLayout>
+    </ContentPage>
+</TabbedPage>

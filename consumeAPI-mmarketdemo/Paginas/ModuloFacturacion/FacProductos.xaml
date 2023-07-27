@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="consumeAPImmarketdemo.Paginas.ModuloFacturacion.FacProductos">
+  <!--Pages can be added as references or inline-->
+    <ContentPage Title="Lista Productos">
+        <StackLayout>
+            <TableView x:Name="ProdsTableView">
+                <TableRoot>
+                    <TableSection Title="Productos">
+                        <ViewCell x:Name="cabecera">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Label Grid.Column="0" Text="Código" FontAttributes="Bold" 
+                                   HorizontalOptions="Center" />
+                                <Label Grid.Column="1" Text="Nombre" FontAttributes="Bold" 
+                                   HorizontalOptions="Center" />
+                                <Label Grid.Column="2" Text="Descripcion" FontAttributes="Bold" 
+                                   HorizontalOptions="Center" />
+                                <Label Grid.Column="3" Text="Precio Unitario" FontAttributes="Bold" 
+                                   HorizontalOptions="Center" />
+                                <Label Grid.Column="4" Text="Stock" FontAttributes="Bold" 
+                                   HorizontalOptions="Center" />
+                                <Label Grid.Column="5" Text="IVA?" FontAttributes="Bold" 
+                                   HorizontalOptions="Center" />
+                                <Label Grid.Column="6" Text="Opciones" FontAttributes="Bold" 
+                                       HorizontalOptions="Center" />
+                            </Grid>
+                        </ViewCell>
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+        </StackLayout>
+    </ContentPage>
+
+    <ContentPage Title="CRUD Productos" x:Name="crudProductos">
+        <StackLayout>
+            <Label Text="API REST - MODULO de Facturacion - Productos" FontSize="16" ></Label>
+            <Label x:Name="lblDatos" Text="Codigo:" FontSize="14"></Label>
+            <Entry Placeholder="Codigo" x:Name="txtCodigo" />
+            <Label x:Name="lblDatos2" Text="Nombre:" FontSize="14"></Label>
+            <Entry Placeholder="Nombre" x:Name="txtNombre" />
+            <Label x:Name="lblDatos3" Text="Descripcion:" FontSize="14"></Label>
+            <Entry Placeholder="Descripcion" x:Name="txtDescripcion" />
+            <Label x:Name="lblDatos4" Text="Precio Unitario:" FontSize="14"></Label>
+            <Entry Placeholder="Precio Unitario" x:Name="txtPrecio" />
+            <Label x:Name="lblDatos6" Text="IVA:" FontSize="14"></Label>
+            <Entry Placeholder="IVA" x:Name="txtImpuesto" />
+
+            <Button Text="Insertar" Clicked="Button_Insertar" />
+            <Button Text="Actualizar" Clicked="Button_Actualizar"/>
+            <Button Text="Limpiar Datos" Clicked="Button_Limpiar"/>
+
+        </StackLayout>
+    </ContentPage>
+
+</TabbedPage>

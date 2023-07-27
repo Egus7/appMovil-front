@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:forms="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.Core"
+             x:Class="consumeAPImmarketdemo.Paginas.ModuloFacturacion.FacPedidos">
+  <!--Pages can be added as references or inline-->
+    <ContentPage Title="Lista Pedidos">
+        <StackLayout>
+            <TableView x:Name="PedidosCabTableView">
+                <TableRoot>
+                    <TableSection Title="PedidosCab">
+                        <ViewCell x:Name="cabeceraCab">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Label Grid.Column="0" Text="N° Pedido" FontAttributes="Bold" 
+                                   HorizontalOptions="Center" />
+                                <Label Grid.Column="1" Text="Fecha Pedido" FontAttributes="Bold" 
+                                   HorizontalOptions="Center" />
+                                <Label Grid.Column="2" Text="Cliente" FontAttributes="Bold" 
+                                   HorizontalOptions="Center" />
+                                <Label Grid.Column="3" Text="Estado Pedido" FontAttributes="Bold" 
+                                   HorizontalOptions="Center" />
+                                <Label Grid.Column="4" Text="Total" FontAttributes="Bold" 
+                                   HorizontalOptions="Center" />
+                                <Label Grid.Column="5" Text="Detalles" FontAttributes="Bold" 
+                                   HorizontalOptions="Center" />
+                            </Grid>
+                        </ViewCell>
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+        </StackLayout>
+    </ContentPage>
+    <!-- Registrar Pedido-->
+    <ContentPage Title="Registrar Pedido">
+        <StackLayout>
+            <Label Text="Fecha Pedido" />
+            <DatePicker x:Name="fechaPicker" Date="{Binding Today}" />
+
+            <!-- Cliente -->
+            <Label Text="Cliente:" FontAttributes="Bold" />
+            <Picker x:Name="pickerCliente" Title="Selecione Cliente" >
+
+            </Picker>
+
+            <!-- Agregar nuevo detalle -->
+            <StackLayout Orientation="Horizontal">
+                <Picker x:Name="pickerProducto" Title="Selecione Producto" >
+
+                </Picker>
+                <Entry Placeholder="Cantidad" x:Name="entryCantidad" Keyboard="Numeric" />
+                <Button Text="Agregar Detalle" Clicked="OnAgregarDetalleClicked" />
+            </StackLayout>
+            
+            <!-- ListView para mostrar los detalles ingresados -->
+            <ListView ItemsSource="{Binding Detalles}" x:Name="listViewDetalles">
+                <ListView.Header>
+                    <StackLayout Orientation="Horizontal" BackgroundColor="LightGray">
+                        <Label Text="Código" FontAttributes="Bold" WidthRequest="150" HorizontalTextAlignment="Center" />
+                        <Label Text="Cantidad" FontAttributes="Bold" WidthRequest="75" HorizontalTextAlignment="Center" />
+                        <Label Text="Precio Unitario" FontAttributes="Bold" WidthRequest="100" HorizontalTextAlignment="Center" />
+                        <Label Text="Subtotal" FontAttributes="Bold" WidthRequest="75" HorizontalTextAlignment="Center" />
+                        <Label Text="Stock" FontAttributes="Bold" WidthRequest="80" HorizontalTextAlignment="Center" />
+                        <Label Text="Acciones" FontAttributes="Bold" WidthRequest="80" HorizontalTextAlignment="Center" />
+                    </StackLayout>
+                </ListView.Header>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                                <!-- Alinea los datos debajo de cada columna de la cabecera -->
+                                <Label Text="{Binding NombreProducto}" FontSize="15" WidthRequest="150" HorizontalTextAlignment="Center" />
+                                <Label Text="{Binding cantidad}" FontSize="15" WidthRequest="75" HorizontalTextAlignment="Center" />
+                                <Label Text="{Binding precio_unitario_venta}" FontSize="15" WidthRequest="100" HorizontalTextAlignment="Center" />
+                                <Label Text="{Binding subtotal}" FontSize="15" WidthRequest="80" HorizontalTextAlignment="Center" />
+                                <Label Text="{Binding stock}" FontSize="15" WidthRequest="75" HorizontalTextAlignment="Center" LineBreakMode="TailTruncation" />
+                                <!-- Botón para eliminar -->
+                                <ImageButton Source="https://cdn-icons-png.flaticon.com/512/5974/5974771.png" 
+                                WidthRequest="22" HeightRequest="22" 
+                                BackgroundColor="Color.Transparent"
+                                Clicked="OnEliminarDetalleClicked"
+                                CommandParameter="{Binding .}"
+                                HorizontalOptions="CenterAndExpand" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Button Text="Registrar Pedido" Clicked="Button_RegistrarPedidoClicked" />
+            
+        </StackLayout>
+    </ContentPage>
+
+    <ContentPage Title="Detalles Pedido" x:Name="detallePage">
+        <StackLayout Margin="10">
+            <Label Text="Detalles del pedido" FontSize="Title" HorizontalOptions="CenterAndExpand" />
+
+            <!-- Ejemplo: Mostrar los detalles del pedido en una TableView -->
+            <TableView x:Name="PedidosDetTableView">
+                <TableRoot>
+                    <TableSection Title="PedidosDet">
+                        <ViewCell x:Name="cabecera">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Label Grid.Column="0" Text="N° Pedido" WidthRequest="100" FontAttributes="Bold" 
+                                   HorizontalTextAlignment="Center" />
+                                <Label Grid.Column="1" Text="Producto" WidthRequest="150" FontAttributes="Bold" 
+                                   HorizontalTextAlignment="Center" />
+                                <Label Grid.Column="2" Text="Cantidad" WidthRequest="75" FontAttributes="Bold" 
+                                   HorizontalTextAlignment="Center" />
+                                <Label Grid.Column="3" Text="Precio Unitario" WidthRequest="100" FontAttributes="Bold" 
+                                   HorizontalTextAlignment="Center" />
+                            </Grid>
+                        </ViewCell>
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+
+            <!--Button Text="Cerrar" Clicked="OnCerrarClicked" 
+                    HorizontalOptions="CenterAndExpand" /-->
+        </StackLayout>
+    </ContentPage>
+</TabbedPage>

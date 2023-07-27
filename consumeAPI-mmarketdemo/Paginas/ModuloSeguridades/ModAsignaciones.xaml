@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="consumeAPImmarketdemo.Paginas.ModAsignaciones">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="MODULO DE SEGURIDADES - Asignar Perfiles a Usuarios" />
+
+            <Label x:Name="lblDatosC" Text="Usuario:" FontSize="14" ></Label>
+            <Picker x:Name="cmbUsuario" Title="Seleccione Usuario" SelectedIndexChanged="cmbUsuario_SelectedIndexChanged">
+
+                <!-- Aquí puedes agregar opciones predefinidas o enlazar con una lista de usuarios -->
+            </Picker>
+            <Label x:Name="lblDatosA" Text="Perfil:" FontSize="14" ></Label>
+            <Picker x:Name="cmbPerfil" Title="Seleccione Perfil / Modulo">
+                <!-- Aquí puedes agregar opciones predefinidas o enlazar con una lista de perfiles -->
+            </Picker>
+
+            <Button Text="Agregar Asignacion" Clicked="Button_Insertar" />
+
+            <Label Text="Perfiles asignados:" FontSize="20" />
+            <ListView x:Name="lstPerfilesAsignados" IsVisible="False">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding id_seg_perfil}" FontSize="18" VerticalOptions="Center" />
+                                <Label Text="{Binding nombre_perfil}" FontSize="18" VerticalOptions="Center" />
+                                <ImageButton BackgroundColor="Transparent"
+                                     Source="https://cdn-icons-png.flaticon.com/512/5974/5974771.png"
+                                     HeightRequest="30"
+                                     WidthRequest="30"
+                                     VerticalOptions="Center"
+                                     Clicked="Button_EliminarAsignacion"
+                                     CommandParameter="{Binding .}">
+                                </ImageButton>
+                            </StackLayout>
+
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

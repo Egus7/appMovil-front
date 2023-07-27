@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage  xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="consumeAPImmarketdemo.Paginas.Registro" >
+    <StackLayout>
+
+        <Label x:Name="lblDatosC" Text="Usuario:" FontSize="14" ></Label>
+        <Entry Placeholder="Usuario" x:Name="txtCodigo" />
+        <Label x:Name="lblDatosN" Text="Nombres:" FontSize="14" ></Label>
+        <Entry Placeholder="Nombres" x:Name="txtNombres" />
+        <Label x:Name="lblDatosA" Text="Apellidos:" FontSize="14" ></Label>
+        <Entry Placeholder="Apellidos" x:Name="txtApellidos" />
+        <Label x:Name="lblDatosCo" Text="Correo:" FontSize="14" ></Label>
+        <Entry Placeholder="Correo" x:Name="txtCorreo" />
+        <Label x:Name="lblDatosCl" Text="Contraseña:" FontSize="14" ></Label>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <!-- Columna para el Entry -->
+                <ColumnDefinition Width="Auto" />
+                <!-- Columna para el Switch -->
+            </Grid.ColumnDefinitions>
+            <Entry Grid.Column="0" Placeholder="Contraseña" x:Name="txtClave" IsPassword="True" />
+            <Switch Grid.Column="1" x:Name="switchMostrarClave" Toggled="SwitchMostrarClave_Toggled" />
+        </Grid>
+
+        <Button Text="Registrarse" Clicked="Button_Reg" />
+        <Button Text="Cancelar" Clicked="Button_Cancelar" />
+
+    </StackLayout>
+  </ContentPage>
