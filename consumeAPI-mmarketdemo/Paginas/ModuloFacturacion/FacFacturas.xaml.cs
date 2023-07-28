@@ -350,11 +350,19 @@ namespace consumeAPImmarketdemo.Paginas.ModuloFacturacion
             grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
             grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
             grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
-            grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });          
+            grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+
+            Cliente cliente = listaClientes.FirstOrDefault(c =>
+                    c.cedula_cliente == cabecera.cedula_cliente);
+
+            // Obtener el nombre del cliente o establecer un valor predeterminado
+            // si no se encuentra
+            string nombreCliente = cliente != null ? cliente.clienteSel : "Cliente no encontrado";
+            string fechaEmision = cabecera.fecha_emision.ToString("dd-MM-yyyy");
 
             Label numeroLabel = new Label { Text = cabecera.numero_factura, HorizontalOptions = LayoutOptions.Center };
-            Label cedulaLabel = new Label { Text = cabecera.cedula_cliente, HorizontalOptions = LayoutOptions.Center };
-            Label fechaLabel = new Label { Text = cabecera.fecha_emision.ToString(), HorizontalOptions = LayoutOptions.Center };
+            Label cedulaLabel = new Label { Text = nombreCliente, HorizontalOptions = LayoutOptions.Center };
+            Label fechaLabel = new Label { Text = fechaEmision, HorizontalOptions = LayoutOptions.Center };
             Label subtotalLabel = new Label { Text = cabecera.subtotal.ToString(), HorizontalOptions = LayoutOptions.Center };           
             Label ivaLabel = new Label { Text = cabecera.valor_iva.ToString(), HorizontalOptions = LayoutOptions.Center };
             Label totalLabel = new Label { Text = cabecera.total.ToString(), HorizontalOptions = LayoutOptions.Center };

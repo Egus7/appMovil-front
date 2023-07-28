@@ -1,2 +1,2 @@
-AdbTarget=-s emulator-5554
+AdbTarget=-s adb-f19c3a950512-V54eMx._adb-tls-connect._tcp.
 AdbOptions=

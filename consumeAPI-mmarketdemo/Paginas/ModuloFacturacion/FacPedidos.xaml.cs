@@ -409,9 +409,16 @@ namespace consumeAPImmarketdemo.Paginas.ModuloFacturacion
             grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
             grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
 
-            Label numeroLabel = new Label { Text = cabecera.numero_pedido.ToString(), HorizontalOptions = LayoutOptions.Center };
-            Label fechaLabel = new Label { Text = cabecera.fecha_pedido.ToString(), HorizontalOptions = LayoutOptions.Center };
-            Label cedulaLabel = new Label { Text = cabecera.cedula_cliente, HorizontalOptions = LayoutOptions.Center };
+            Cliente cliente = listaClientes.FirstOrDefault(c => 
+                                c.cedula_cliente == cabecera.cedula_cliente);
+
+            // Obtener el nombre del cliente o establecer un valor predeterminado
+            // si no se encuentra
+            string nombreCliente = cliente != null ? cliente.clienteSel : "Cliente no encontrado";
+
+            Label numeroLabel = new Label { Text = cabecera.numero_pedido.ToString(), WidthRequest = 100, HorizontalOptions = LayoutOptions.Center };
+            Label fechaLabel = new Label { Text = cabecera.fecha_pedido.ToString("dd-MM-yyyy"), WidthRequest = 110, HorizontalOptions = LayoutOptions.Center };
+            Label cedulaLabel = new Label { Text = nombreCliente, WidthRequest = 150, HorizontalOptions = LayoutOptions.Center };
             Label estadopedidoLabel = new Label { Text = cabecera.id_estado_pedido, HorizontalOptions = LayoutOptions.Center };
             Label subtotalLabel = new Label { Text = cabecera.subtotal.ToString(), HorizontalOptions = LayoutOptions.Center };
 
